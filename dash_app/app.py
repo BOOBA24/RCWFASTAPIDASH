@@ -72,7 +72,7 @@ app.layout = html.Div([
 )
 def update_weather(n):
     try:
-        response = requests.get("https://watherapi-hdcgfeakfwd9frcy.canadacentral-01.azurewebsites.net/info", timeout=2)
+        response = requests.get("https://watherapi-hdcgfeakfwd9frcy.canadacentral-01.azurewebsites.net/info", timeout=5)
         data = response.json()
         return html.Div([
             html.H2("🌤️ Météo Actuelle"),
