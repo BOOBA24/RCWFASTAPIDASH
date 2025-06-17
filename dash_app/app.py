@@ -1,6 +1,8 @@
 import dash
 from dash import html, dcc, Output, Input
 import requests
+from datetime import datetime
+import pytz  # Ajouté pour gérer les fuseaux horaires
 
 # App Dash
 app = dash.Dash(__name__, requests_pathname_prefix='/dashboard/')
@@ -74,11 +76,19 @@ def update_weather(n):
     try:
         response = requests.get("https://watherapi-hdcgfeakfwd9frcy.canadacentral-01.azurewebsites.net/info", timeout=5)
         data = response.json()
+
+        # Convertir l'heure UTC vers fuseau horaire local
+        utc_time = datetime.strptime(f"{data['date']} {data['time']}", "%Y-%m-%d %H:%M:%S")
+        local_timezone = pytz.timezone("America/Toronto")
+        utc_time = pytz.utc.localize(utc_time)
+        local_time = utc_time.astimezone(local_timezone)
+        formatted_time = local_time.strftime("%Y-%m-%d à %H:%M:%S")
+
         return html.Div([
             html.H2("🌤️ Météo Actuelle"),
             html.P(f"Ville : {data['weather']['city']}"),
             html.P(f"Température : {data['weather']['temperature']} °C"),
-            html.P(f"Dernière mise à jour : {data['date']} à {data['time']}")
+            html.P(f"Dernière mise à jour locale : {formatted_time}")
         ], style={
             'border': '2px solid #ccc',
             'padding': '10px',
