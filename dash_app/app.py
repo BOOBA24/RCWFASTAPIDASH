@@ -72,7 +72,7 @@ app.layout = html.Div([
 )
 def update_weather(n):
     try:
-        response = requests.get("https://watherapi-hdcgfeakfwd9frcy.canadacentral-01.azurewebsites.net/info", timeout=5)
+        response = requests.get("https://watherapi-hdcgfeakfwd9frcy.canadacentral-01.azurewebsites.net/info", timeout=19)
         data = response.json()
 
         # Utiliser directement l'heure fournie par l'API (déjà locale)
