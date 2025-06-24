@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - RCW1001FASTAPIDASHH
+name: Build and deploy Python app to Azure Web App - FASTAAPIDASH
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1327C18611214BA2B56489742F28BFEB }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D9CDC2E02DED448D82FD6B90BC337731 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E6368557AA764EC1A51999078B241BFB }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4933FAEAF1BD4AAC9326E7A1497BC0D5 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_49FCABA256A74BB09E29803E58773410 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C5917AB2F2F24E338CAED00300FFC9FB }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'RCW1001FASTAPIDASHH'
+          app-name: 'FASTAAPIDASH'
           slot-name: 'Production'
           
